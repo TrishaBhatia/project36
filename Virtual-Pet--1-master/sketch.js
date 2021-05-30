@@ -24,7 +24,7 @@ function setup() {
   foodStock = database.ref("Food");
   foodStock.on("value", readStock);
 
-  foodObj = new food();
+  foodObj = new Food();
 
   feed = createButton("Feed the Dog");
   feed.position(750, 95);
