@@ -4,7 +4,7 @@ var fedTime, lastFed;
 var foodObj;
 var gameState,readState;
 var bedroom,garden,washroom;
-
+var feedTime;
 function preload()
 {
 	 dog1=loadImage("images/Dog.png");
@@ -40,7 +40,7 @@ function setup() {
 
   });
   feedTime=database.ref('FeedTime');
-  feedTime.on("value",function(data)
+  feedTime.on("value",(data)=>
   {
     lastFed=data.val();
   })
@@ -69,13 +69,15 @@ function setup() {
 function draw() {  
 
   currentTime = hour();
+  console.log(lastFed)
   if (currentTime === (lastFed + 1)){
+    alert("Playing");
     update("Playing");
     foodObj.garden();
   } else if(currentTime === (lastFed + 2)){
       update("Sleeping");
       foodObj.bedroom();
-  } else if (currentTime > (lastFed +2) && currentTime <= (lastFed + 4)){
+  } else if (currentTime > (lastFed +3) && currentTime <= (lastFed + 4)){
       update("Bathing");
       foodObj.washroom();
   } else {
@@ -93,18 +95,7 @@ function draw() {
     dog.addImage(dog1);
   }
 
-/*  fill(255, 255, 254);
-  textSize(25);
-  stroke(10);
-  strokeWeight(5);
-  if(lastFed>=12){
-    text("Last Fed : "+ lastFed%10 + "AM", 390, 30);
-  }else if(lastFed==0){
-    text("Last Fed : 12 AM", 390, 30);
-  }else{
-    text("Last Fed : "+lastFed, 390, 30);
-  }*/
-
+  
   drawSprites();
 
 

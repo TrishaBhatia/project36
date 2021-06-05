@@ -30,6 +30,20 @@ class Milk{
     }
     display(){
         background(bg);
+
+    fill(255, 255, 254);
+  textSize(25);
+  stroke(10);
+  strokeWeight(5);
+  if(lastFed>=12){
+    text("Last Fed : "+ lastFed%10 + "PM", 390, 30);
+  }
+  else if(lastFed===0){
+      text("LastFed : 12AM ",390,30);
+  }
+  else{
+    text("Last Fed : "+lastFed, 390, 30);
+  }
   
         var x = 35, y = 60;
 
